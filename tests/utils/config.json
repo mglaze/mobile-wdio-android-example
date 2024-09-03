@@ -1,0 +1,10 @@
+{
+  "openLib":{
+    "search_uri": "http://openlibrary.org/search.json",
+    "books_uri": "http://openlibrary.org/books/", 
+    "coverArt_uri": "http://covers.openlibrary.org/b/olid/",
+    "headers": {
+      "Content-Type": "application/json"
+    }
+  }
+}

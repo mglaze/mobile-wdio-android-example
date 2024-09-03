@@ -1,0 +1,112 @@
+{
+	"info": {
+		"_postman_id": "ca9b728a-6b29-40bb-9af0-26418dd96827",
+		"name": "OpenLib",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cover Art",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bc88b18a-c9e5-4cf6-8ecd-0e5e86c27a23",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('responseTime is within bounds', function() {",
+							"    console.log(pm.response);",
+							"    pm.expect(pm.response.responseTime).to.be.below(200)",
+							"});",
+							"",
+							"pm.test('status code is 200', function() {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content-Type is present\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\");",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://covers.openlibrary.org/b/olid/OL3475116M-M.jpg?default=false",
+					"protocol": "http",
+					"host": [
+						"covers",
+						"openlibrary",
+						"org"
+					],
+					"path": [
+						"b",
+						"olid",
+						"OL3475116M-M.jpg"
+					],
+					"query": [
+						{
+							"key": "default",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book Details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "93bbc0eb-67be-46eb-a175-65ce768ef255",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('responseTime is within bounds', function() {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200)",
+							"});"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://openlibrary.org/api/books?bibkeys=ISBN:0201558025,LCCN:93005405",
+					"protocol": "http",
+					"host": [
+						"openlibrary",
+						"org"
+					],
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "bibkeys",
+							"value": "ISBN:0201558025,LCCN:93005405"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
